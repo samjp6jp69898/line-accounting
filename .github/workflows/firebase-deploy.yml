@@ -30,7 +30,7 @@ jobs:
 
       # 部署到 Firebase Hosting
       - name: Deploy to Firebase
-        uses: firebase/actions/hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
           channelId: line-accounting 
