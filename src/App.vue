@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      
+
     };
   },
   methods: {
@@ -15,13 +15,36 @@ export default {
 
 <template>
   <div class="app">
-    <button @click="toggleTheme">切換主題</button>
+    <div class="flex items-center justify-center h-[100%]">
+      <button class="theme-btn" @click="toggleTheme">切換主題</button>
+    </div>
   </div>
 </template>
 
 <style>
+@import "./styles/tailwind.css";
+
 body {
   background-color: var(--background-color);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background-color);
+}
+
+.theme-btn {
+  background-color: var(--button-bg-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 20px;
 }
 
 .logo {
