@@ -32,6 +32,6 @@ jobs:
       - name: Deploy to Firebase
         uses: firebase/actions/hosting-deploy@v0
         with:
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_LINE_ACCOUNTING }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
           channelId: line-accounting 
           projectId: 703175972613 # 替換為你的 Firebase 項目 ID
