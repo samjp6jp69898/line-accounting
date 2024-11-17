@@ -1,0 +1,37 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - develop # 當推送到 develop 分支時觸發
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 檢出代碼
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 設置 Node.js 環境
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20 # 指定 Node.js 版本
+
+      # 安裝依賴
+      - name: Install dependencies
+        run: npm install
+
+      # 構建項目
+      - name: Build project
+        run: npm run build # 根據你的框架調整，如 `npm run build` 或 `yarn build`
+
+      # 部署到 Firebase Hosting
+      - name: Deploy to Firebase
+        uses: firebase/actions/hosting-deploy@v0
+        with:
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_LINE_ACCOUNTING }}"
+          channelId: line-accounting 
+          projectId: 703175972613 # 替換為你的 Firebase 項目 ID
