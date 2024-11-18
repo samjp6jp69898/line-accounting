@@ -82,7 +82,7 @@ export const lineLogin = async (data) => {
   let params = Object.entries({
     response_type: "code",
     client_id: config.clientId,
-    redirect_uri: "https://members-a6aa7--test-member-5-c4jbit9a.web.app",
+    redirect_uri: "https://line-accounting--line-accounting-pngozd2o.web.app",
     scope: "openid profile",
     bot_prompt: "aggressive",
     // normal 為顯示在授權頁面加入好友按鈕, aggressive 為授權許可後強制跳轉至加入好友頁面
