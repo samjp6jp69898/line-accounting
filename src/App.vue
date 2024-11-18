@@ -1,4 +1,5 @@
 <script>
+import { lineLogin } from './services/lineApi.service'
 export default {
   data() {
     return {
@@ -9,14 +10,18 @@ export default {
     toggleTheme() {
       this.$store.dispatch('basic/toggleTheme');
     },
+    login() {
+      lineLogin()
+    }
   },
 };
 </script>
 
 <template>
   <div class="app">
-    <div class="flex items-center justify-center h-[100%]">
+    <div class="flex items-center justify-center flex-col h-[100%]">
       <button class="theme-btn" @click="toggleTheme">切換主題</button>
+      <button class="theme-btn mt-4" @click="login">login</button>
     </div>
   </div>
 </template>
