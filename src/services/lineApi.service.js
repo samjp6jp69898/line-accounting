@@ -66,7 +66,6 @@ export const refreshLineAccessToken = async (refreshToken) => {
 };
 
 export const lineLogin = async (data) => {
-  store.commit("line/setLineLoginData", null);
   /*
         line login state
         使用：直接丟入 Json data

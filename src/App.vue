@@ -1,5 +1,5 @@
 <script>
-import { lineLogin } from './services/lineApi.service'
+import { lineLogin, getLineToken } from './services/lineApi.service'
 export default {
   data() {
     return {
@@ -14,6 +14,16 @@ export default {
       lineLogin()
     }
   },
+  async mounted() {
+    const code = new URLSearchParams(window.location.search).get("code");
+
+    if (code) {
+      const res = await getLineToken(code)
+      console.log(res)
+    } else {
+      console.error('no code')
+    }
+  }
 };
 </script>
 
