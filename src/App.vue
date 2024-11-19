@@ -1,25 +1,31 @@
 <script>
-import { lineLogin, getLineToken } from './services/lineApi.service'
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
 
     };
   },
+  computed: {
+    ...mapGetters('line', {
+      name: 'name',
+      avatar: 'avatar',
+      isLogin: 'isLogin'
+    })
+  },
   methods: {
     toggleTheme() {
       this.$store.dispatch('basic/toggleTheme');
     },
     login() {
-      lineLogin()
+      this.$store.dispatch('line/login')
     }
   },
   async mounted() {
     const code = new URLSearchParams(window.location.search).get("code");
 
     if (code) {
-      const res = await getLineToken(code)
-      console.log(res)
+      await this.$store.dispatch('line/getToken', code)
     } else {
       console.error('no code')
     }
@@ -31,7 +37,11 @@ export default {
   <div class="app">
     <div class="flex items-center justify-center flex-col h-[100%]">
       <button class="theme-btn" @click="toggleTheme">切換主題</button>
-      <button class="theme-btn mt-4" @click="login">login</button>
+      <button class="theme-btn mt-4" @click="login" v-if="!isLogin">login</button>
+      <div v-if="isLogin">
+        <img :src="avatar" alt="" class="w-10 h-10 rounded-full" />
+        <span class="name">{{ name }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -62,18 +72,7 @@ body {
   margin-top: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.name {
+  color: var( --text-color);
 }
 </style>

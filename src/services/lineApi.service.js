@@ -66,6 +66,7 @@ export const refreshLineAccessToken = async (refreshToken) => {
 };
 
 export const lineLogin = async (data) => {
+  store.commit("line/setLineLoginData", null);
   /*
         line login state
         使用：直接丟入 Json data
@@ -81,7 +82,8 @@ export const lineLogin = async (data) => {
   let params = Object.entries({
     response_type: "code",
     client_id: config.clientId,
-    redirect_uri: "https://line-accounting--line-accounting-pngozd2o.web.app",
+    redirect_uri: config.redirectUri,
+    state: JSON.stringify(data),
     scope: "openid profile",
     bot_prompt: "aggressive",
     // normal 為顯示在授權頁面加入好友按鈕, aggressive 為授權許可後強制跳轉至加入好友頁面
