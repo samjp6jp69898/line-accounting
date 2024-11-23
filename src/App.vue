@@ -1,51 +1,55 @@
+<template>
+  <div class="app">
+    <RouterView />
+  </div>
+</template>
 <script>
-import { mapGetters } from 'vuex';
+import { RouterView } from "vue-router";
+import axios from 'axios'
 export default {
+  components: {
+    RouterView,
+  },
   data() {
     return {
 
     };
   },
-  computed: {
-    ...mapGetters('line', {
-      name: 'name',
-      avatar: 'avatar',
-      isLogin: 'isLogin'
-    })
-  },
-  methods: {
-    toggleTheme() {
-      this.$store.dispatch('basic/toggleTheme');
-    },
-    login() {
-      this.$store.dispatch('line/login')
-    }
-  },
-  async mounted() {
-    const code = new URLSearchParams(window.location.search).get("code");
+  async created() {
+    await axios.post(
+      `${this.$config.apiBaseUrl}/login`,
+      {
+        email: "sam@gmail.com",
+        password: "123123"
+      },
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    )
+    this.$store.commit('basic/setLiffInitStatus', false)
+    // await this.$liff.init({
+    //   liffId: this.$config.liffId
+    // })
+    // const isLogin = await this.$liff.isLoggedIn()
+    // console.log('app isLogin', isLogin)
 
-    if (code) {
-      await this.$store.dispatch('line/getToken', code)
-    } else {
-      console.error('no code')
-    }
+    // this.$store.commit('user/setIsLogin', isLogin)
+    // if (isLogin) {
+    //   const profileRes = await this.$liff.getProfile()
+    //   console.log('profile', profileRes)
+    //   this.$store.commit('user/setAvatar', profileRes.pictureUrl)
+    //   this.$store.commit('user/setName', profileRes.displayName)
+    //   const accessToken = await this.$liff.getAccessToken()
+    //   console.log('accessToken', accessToken)
+    // } else {
+    //   this.$liff.login({ redirectUri: this.$config.redirectUri });
+    // }
+    // this.$store.commit('basic/setLiffInitStatus', true)
   }
 };
 </script>
-
-<template>
-  <div class="app">
-    <div class="flex items-center justify-center flex-col h-[100%]">
-      <button class="theme-btn" @click="toggleTheme">切換主題</button>
-      <button class="theme-btn mt-4" @click="login" v-if="!isLogin">login</button>
-      <div v-if="isLogin">
-        <img :src="avatar" alt="" class="w-10 h-10 rounded-full" />
-        <span class="name">{{ name }}</span>
-      </div>
-    </div>
-  </div>
-</template>
-
 <style>
 @import "./styles/tailwind.css";
 
@@ -55,6 +59,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .app {
@@ -62,17 +67,26 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
-  background-color: var(--background-color);
+  background: var(--background-color);
 }
 
-.theme-btn {
-  background-color: var(--button-bg-color);
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-top: 20px;
+.scroll_flex_container {
+  background: var(--background-color);
+  width: 100%;
+  height: 100svh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.name {
-  color: var( --text-color);
+.scroll_flex_container::-webkit-scrollbar {
+  display: none;
 }
 </style>

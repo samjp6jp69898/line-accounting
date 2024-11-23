@@ -1,0 +1,49 @@
+:root {
+    --el-date-editor-width: 160px;
+    --el-fill-color-light: #F5E866;
+    --el-input-height: 38px;
+    --el-component-size: 38px;
+    --el-menu-hover-bg-color: transparent;
+    
+}
+
+.el-menu--horizontal>.el-menu-item.is-active {
+    color: #52BFEA;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.el-date-editor.el-input {
+    text-align: center;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    background-color: #4B5563;
+    border-radius: 9999px;
+    border: none;
+}
+
+.el-input__prefix {
+    display: none;
+}
+
+.el-input__inner {
+    text-align: center;
+}
+
+.el-input__wrapper,
+.el-input__wrapper:hover {
+    box-shadow: none;
+    border-radius: 6px;
+}
+
+.el-progress-circle {
+    stroke: #F5E866;
+}
+
+.el-progress-circle__track {
+    stroke: #F5E866;
+    --el-fill-color-light: #F5E866;
+}

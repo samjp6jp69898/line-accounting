@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import basic from "./modules/basic.module";
-import line from "./modules/line.module";
+import user from "./modules/user.module";
 
 export default createStore({
   state: {},
@@ -8,6 +8,6 @@ export default createStore({
   actions: {},
   modules: {
     basic,
-    line
+    user
   }
 });
