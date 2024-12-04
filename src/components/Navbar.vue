@@ -5,7 +5,7 @@
         <el-menu-item :index="groupIndex">群組</el-menu-item>
         <el-sub-menu index="2" @close="handleClose">
             <template #title>
-                <img style="width: 20px" src="../assets/vue.svg" />
+                <img class="size-7 rounded-full" :src="displayAvatar" />
             </template>
             <el-menu-item :index="subMenuPersonalIndex">個人</el-menu-item>
             <el-menu-item :index="subMenuGroupIndex">群組</el-menu-item>

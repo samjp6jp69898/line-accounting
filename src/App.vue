@@ -5,7 +5,6 @@
 </template>
 <script>
 import { RouterView } from "vue-router";
-import axios from 'axios'
 export default {
   components: {
     RouterView,
@@ -16,37 +15,25 @@ export default {
     };
   },
   async created() {
-    await axios.post(
-      `${this.$config.apiBaseUrl}/login`,
-      {
-        email: "sam@gmail.com",
-        password: "123123"
-      },
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }
-    )
     this.$store.commit('basic/setLiffInitStatus', false)
-    // await this.$liff.init({
-    //   liffId: this.$config.liffId
-    // })
-    // const isLogin = await this.$liff.isLoggedIn()
-    // console.log('app isLogin', isLogin)
+    await this.$liff.init({
+      liffId: this.$config.liffId
+    })
+    const isLogin = await this.$liff.isLoggedIn()
+    console.log('app isLogin', isLogin)
 
-    // this.$store.commit('user/setIsLogin', isLogin)
-    // if (isLogin) {
-    //   const profileRes = await this.$liff.getProfile()
-    //   console.log('profile', profileRes)
-    //   this.$store.commit('user/setAvatar', profileRes.pictureUrl)
-    //   this.$store.commit('user/setName', profileRes.displayName)
-    //   const accessToken = await this.$liff.getAccessToken()
-    //   console.log('accessToken', accessToken)
-    // } else {
-    //   this.$liff.login({ redirectUri: this.$config.redirectUri });
-    // }
-    // this.$store.commit('basic/setLiffInitStatus', true)
+    this.$store.commit('user/setIsLogin', isLogin)
+    if (isLogin) {
+      const profileRes = await this.$liff.getProfile()
+      console.log('profile', profileRes)
+      this.$store.commit('user/setAvatar', profileRes.pictureUrl)
+      this.$store.commit('user/setName', profileRes.displayName)
+      const accessToken = await this.$liff.getAccessToken()
+      console.log('accessToken', accessToken)
+    } else {
+      this.$liff.login({ redirectUri: this.$config.redirectUri });
+    }
+    this.$store.commit('basic/setLiffInitStatus', true)
   }
 };
 </script>
