@@ -12,7 +12,7 @@
                     v-if="currentRageYear" v-model="timeValue" type="year" placeholder="選擇年份" ref="timePicker"
                     @change="change" />
 
-                <button class="font-white text-sm absolute right-14 size-8 rounded-full bg-[#4a4a4a] custom-shadow"
+                <button class="text-white text-sm absolute right-14 size-8 rounded-full bg-[#4a4a4a] custom-shadow"
                     @click.stop="toggleRangePicker" circle plain>
                     {{ currentRange }}
                 </button>
