@@ -1,5 +1,3 @@
-import liff from "@line/liff";
-
 const config = {
   lineApiBaseUrl: "https://api.line.me/oauth2/v2.1",
   lineCheckFreindShipApiUrl: "https://api.line.me/friendship/v1/status",

@@ -3,26 +3,31 @@
     --el-fill-color-light: #F5E866;
     --el-input-height: 38px;
     --el-component-size: 38px;
-    --el-menu-hover-bg-color: transparent;
-    
+    --el-menu-hover-bg-color: #ffffff1a;
+    --el-menu-active-color: #ffffff;
+    --el-menu-text-color: #ffffff80;
+    --el-font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --stroke-color: #4a4a4a;
 }
 
 .el-menu--horizontal>.el-menu-item.is-active {
-    color: #52BFEA;
+    color: #ffffff1a;
     font-weight: 900;
     font-size: 16px;
+    border-bottom: 0px solid transparent;
 }
 
 .el-date-editor.el-input {
     text-align: center;
-    width: 160px;
     display: flex;
     justify-content: center;
+    margin: 0 auto;
     font-size: 16px;
     font-weight: 900;
-    background-color: #4B5563;
-    border-radius: 9999px;
+    /* background-color: #ffffff1a; */
+    border-radius: 0.75rem;
     border: none;
+    /* width: 160px; */
 }
 
 .el-input__prefix {
@@ -37,13 +42,18 @@
 .el-input__wrapper:hover {
     box-shadow: none;
     border-radius: 6px;
+    margin: auto 0;
 }
 
 .el-progress-circle {
-    stroke: #F5E866;
+    stroke: var(--stroke-color);
 }
 
 .el-progress-circle__track {
-    stroke: #F5E866;
-    --el-fill-color-light: #F5E866;
+    stroke: var(--stroke-color);
+    --el-fill-color-light: var(--stroke-color);
+}
+
+.el-statistic__content {
+    color: #fff;
 }

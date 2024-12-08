@@ -10,7 +10,7 @@
 }
 
 [theme="dark"] {
-  --background-color: #121212;
+  --background-color: #181818;
   --primary-color: #1e88e5;
   --secondary-color: #bb86fc;
   --text-color: #ffffff;
@@ -18,4 +18,5 @@
   --border-color: #333333;
   --hover-color: #1a1a1a;
   --button-bg-color: #1e88e5;
+  --secondary-background-color: #ffffff1a;
 }

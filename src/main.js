@@ -35,4 +35,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.config.globalProperties.$config = config
 app.config.globalProperties.$liff = liff
+app.config.globalProperties.DEBUG = process.env.NODE_ENV === 'development'
 app.mount('#app')

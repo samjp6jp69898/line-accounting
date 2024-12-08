@@ -3,7 +3,7 @@
         :unique-opened="true" :close-on-click-outside="true" :ellipsis="false" menu-trigger="click">
         <el-menu-item :index="personalIndex">個人</el-menu-item>
         <el-menu-item :index="groupIndex">群組</el-menu-item>
-        <el-sub-menu index="2" @close="handleClose">
+        <!-- <el-sub-menu index="2" @close="handleClose">
             <template #title>
                 <img class="size-7 rounded-full" :src="displayAvatar" />
             </template>
@@ -11,8 +11,8 @@
             <el-menu-item :index="subMenuGroupIndex">群組</el-menu-item>
             <el-menu-item :index="personalProfileIndex">個人檔案</el-menu-item>
             <el-menu-item :index="myPaymentsIndex">我的收款</el-menu-item>
-            <!-- <el-menu-item index="2-3">登出</el-menu-item> -->
-        </el-sub-menu>
+            <el-menu-item index="2-3">登出</el-menu-item>
+        </el-sub-menu> -->
     </el-menu>
 </template>
 <script>
