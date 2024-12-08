@@ -36,7 +36,7 @@
             <div style="background: var( --secondary-background-color);"
                 class="px-1.5 rounded-xl h-48 flex items-center justify-center">
                 <el-progress :stroke-width="12" stroke-linecap="square" type="circle" :indeterminate="true"
-                    :duration="10" :percentage="progressPercentage" :width="130" color="#e8ab51">
+                    :duration="10" :percentage="progressPercentage" :width="130" color="var(--primary-color)">
                     <template #default>
                         <el-statistic :value="displayBalance">
                             <template #title>
@@ -53,7 +53,7 @@
         <div class="absolute bottom-4 flex w-full items-center justify-center">
             <el-button type="primary" circle size="default" text bg>
                 <template #icon>
-                    <el-icon size="42" color="#52BFEA">
+                    <el-icon size="42" color="var(--primary-color)">
                         <CirclePlusFilled />
                     </el-icon>
                 </template>

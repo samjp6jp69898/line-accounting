@@ -1,7 +1,7 @@
 <template>
     <div class="rounded-xl border-2 border-[#ffffff1a] px-4 py-3 mb-2.5 text-md font-bold flex items-center justify-between">
         <div class="text-white">{{ categoryName }}</div>
-        <div class="text-[#e8ab51]">${{ amount }}</div>
+        <div style="color: var(--primary-color);">${{ amount }}</div>
     </div>
 </template>
 <script>
