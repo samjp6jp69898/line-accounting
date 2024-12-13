@@ -45,4 +45,34 @@ httpClient.interceptors.request.use(
   }
 );
 
-export const login = async (data) => _post('/login', data)
+export const login = async (data) => _post('/auth/line', data)
+
+export const getUserGroups = async () => _get('/mrsaccountant/user/groups');
+
+export const createUserGroup = async (data) => _post('/mrsaccountant/user/groups', data);
+
+export const addUserToGroup = async (userId, groupId) => _post(`/group/user/${userId}/${groupId}`);
+
+export const getGroupTransactions = async (groupId) => _get(`/mrsaccountant/group/transaction?groupId=${groupId}`);
+
+export const createGroupTransaction = async (groupId, data) => _post(`/mrsaccountant/group/transaction/${groupId}`, data);
+
+export const updateGroupTransaction = async (transactionId, data) => _post(`/mrsaccountant/group/transaction/${transactionId}`, data);
+
+export const deleteGroupTransaction = async (transactionId) => httpClient.delete(`/mrsaccountant/group/transaction/${transactionId}`);
+
+export const getUserRecords = async (startdate, enddate) => {
+  let url = '/mrsaccountant/user/records';
+  if (startdate || enddate) {
+    url += `?startdate=${startdate || ''}&enddate=${enddate || ''}`;
+  }
+  return _get(url);
+};
+
+export const addUserRecord = async (data) => _post('/mrsaccountant/user/records', data);
+
+export const updateUserRecord = async (id, data) => _post(`/mrsaccountant/user/records/${id}`, data);
+
+export const deleteUserRecord = async (id) => httpClient.delete(`/mrsaccountant/user/records/${id}`);
+
+export const getSettlementDetails = async (groupId) => _get(`/mrsaccountant/settlement/${groupId}`);
